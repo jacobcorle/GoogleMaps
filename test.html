@@ -37,7 +37,7 @@
 	var mark = new google.maps.Marker({
     position: map.getCenter(),
     map: map,
-    title: 'Click to zoom'
+    title: 'I Center You'
   });
 
   google.maps.event.addListener(map, 'center_changed', function() {
@@ -47,13 +47,15 @@
       map.panTo(mark.getPosition());
     }, 3000);
   });
+  
 
     var marker, i;
 
     for (i = 0; i < locations.length; i++) {  
       marker = new google.maps.Marker({
         position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
+        map: map,
+		animation: google.maps.Animation.DROP
       });
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
